@@ -4,32 +4,422 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miriam Bay Sweeney</title>
-    
+
     <!-- Linking Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Internal CSS -->
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
-        font-family: 'Lato', serif; /* Applying the Google Font */
-        margin-left: 1in; /* Add 1 inch of margin to the left */
-        background-color: #fbf5ea; /* Adding a light oat background color */
-        color: #000000; /* Setting a dark text color */
+        font-family: 'Lato', sans-serif;
+        line-height: 1.6;
+        color: #333;
       }
 
-      h1 {
-        font-size: 2.5em; /* Making the heading bigger */
-        color: #222323; /* Giving the heading a custom color */
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background-image: url('images/DSC00086.JPG');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        position: relative;
+        padding: 20vh 8vw 0 0;
       }
 
-      p {
-        font-size: 1.2em; /* Adjusting the size of paragraphs */
-        line-height: 1.5; /* Improving readability */
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .hero-content {
+        text-align: right;
+        color: white;
+        z-index: 2;
+        position: relative;
+        max-width: 600px;
+        white-space: nowrap;
+      }
+
+      .hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        font-weight: 400;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Main Content */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .sections-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        padding: 4rem 0;
+        align-items: start;
+      }
+
+      .section {
+        padding: 0;
+      }
+
+      .section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: #2c3e50;
+        text-align: center;
+      }
+
+      .section-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .section-content a {
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .section-content a img {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      .section-content a:hover img {
+        transform: scale(1.05);
+        opacity: 0.9;
+      }
+
+      /* Substack Posts Styling */
+      .substack-tagline {
+        font-style: italic;
+        margin-bottom: 2rem;
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      .substack-posts {
+        margin: 2rem 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .post-item {
+        background: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid #FF6719;
+        text-align: left;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        aspect-ratio: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 200px;
+      }
+
+      .post-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+
+      .post-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+        text-decoration: none;
+      }
+
+      .post-title:hover {
+        color: #FF6719;
+      }
+
+      .post-date {
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 0.8rem;
+      }
+
+      .post-excerpt {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .substack-link {
+        display: inline-block;
+        margin-top: 1.5rem;
+        color: #FF6719;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+
+      .substack-link:hover {
+        color: #e55a15;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 15vh 5vw 0 0;
+          align-items: flex-start;
+          justify-content: center;
+        }
+
+        .hero-content {
+          text-align: center;
+          max-width: 90%;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .sections-grid {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .section h2 {
+          font-size: 2rem;
+        }
+
+        .container {
+          padding: 0 1rem;
+        }
+
+        .post-item {
+          min-height: 180px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero {
+          padding: 12vh 3vw 0 0;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
       }
     </style>
 </head>
 <body>
-    <h1>Hello, world.</h1>
-    <p>I'm Miriam. It's nice to have you here.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nice to meet you.</h1>
+            <p>I'm Miriam. Happy to have you here.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="sections-grid">
+            <!-- What I'm Working On Section -->
+            <section class="section">
+                <h2>What I'm working on</h2>
+                <div class="section-content">
+                    <a href="https://trymoonlit.com" target="_blank" rel="noopener noreferrer">
+                        <img src="images/MOONLIT-LOGO-WITH-TITLE.png" alt="Moonlit" style="max-width: 300px; height: auto; transition: transform 0.3s ease;">
+                    </a>
+                </div>
+            </section>
+
+            <!-- What I'm Thinking Section -->
+            <section class="section">
+                <h2>What I'm thinking</h2>
+                <div class="section-content">
+                    <p class="substack-tagline">"Upgrade your internal models and engineer the outcomes you actually want — one conscious iteration at a time."</p>
+                    <div id="substack-posts" class="substack-posts">
+                        <p>Loading latest posts...</p>
+                    </div>
+                    <a href="https://consciousiteration.substack.com/" target="_blank" rel="noopener noreferrer" class="substack-link">
+                        Read more on Substack →
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        async function loadSubstackPosts() {
+            try {
+                // Try multiple RSS services and fallback to manual posts
+                let data = null;
+
+                // First try: RSS2JSON
+                try {
+                    const response1 = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://consciousiteration.substack.com/feed&count=3');
+                    const result1 = await response1.json();
+                    if (result1.status === 'ok' && result1.items?.length > 0) {
+                        data = result1;
+                    }
+                } catch (e) {
+                    console.log('RSS2JSON failed, trying alternative...');
+                }
+
+                // Second try: AllOrigins proxy
+                if (!data) {
+                    try {
+                        const response2 = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://consciousiteration.substack.com/feed'));
+                        const result2 = await response2.json();
+                        if (result2.contents) {
+                            // Parse XML manually
+                            const parser = new DOMParser();
+                            const xml = parser.parseFromString(result2.contents, 'text/xml');
+                            data = parseRSSXML(xml);
+                        }
+                    } catch (e) {
+                        console.log('AllOrigins failed, using fallback posts...');
+                    }
+                }
+
+                // Fallback: Use manually curated posts
+                if (!data) {
+                    data = {
+                        items: [
+                            {
+                                title: "Who benefits from your postponed happiness?",
+                                link: "https://consciousiteration.substack.com/p/who-benefits-from-your-postponed",
+                                pubDate: "2024-02-18",
+                                description: "Many of us delay our happiness, waiting for the perfect moment or achievement. But who really benefits when we postpone joy? This post explores the hidden costs of deferred happiness and how to reclaim it..."
+                            },
+                            {
+                                title: "If you give a guy a model...",
+                                link: "https://consciousiteration.substack.com/p/if-you-give-a-guy-a-model",
+                                pubDate: "2024-02-17",
+                                description: "A playful take on how mental models shape our reality and decision-making. Once you give someone a framework for understanding the world, they'll want to apply it everywhere..."
+                            },
+                            {
+                                title: "Four Laws of Self-Mastery",
+                                link: "https://consciousiteration.substack.com/p/four-laws-of-self-mastery",
+                                pubDate: "2024-04-22",
+                                description: "Drawing from ancient wisdom and modern psychology, these four fundamental principles can guide your journey toward genuine self-mastery and conscious living..."
+                            }
+                        ]
+                    };
+                }
+
+                displayPosts(data.items);
+            } catch (error) {
+                console.error('Error loading Substack posts:', error);
+                // Final fallback
+                const fallbackPosts = [
+                    {
+                        title: "Who benefits from your postponed happiness?",
+                        link: "https://consciousiteration.substack.com/p/who-benefits-from-your-postponed",
+                        pubDate: "2024-02-18",
+                        description: "Many of us delay our happiness, waiting for the perfect moment or achievement. But who really benefits when we postpone joy?"
+                    },
+                    {
+                        title: "If you give a guy a model...",
+                        link: "https://consciousiteration.substack.com/p/if-you-give-a-guy-a-model",
+                        pubDate: "2024-02-17",
+                        description: "A playful take on how mental models shape our reality and decision-making processes."
+                    },
+                    {
+                        title: "Four Laws of Self-Mastery",
+                        link: "https://consciousiteration.substack.com/p/four-laws-of-self-mastery",
+                        pubDate: "2024-04-22",
+                        description: "Fundamental principles to guide your journey toward genuine self-mastery and conscious living."
+                    }
+                ];
+                displayPosts(fallbackPosts);
+            }
+        }
+
+        function parseRSSXML(xml) {
+            const items = [];
+            const entries = xml.querySelectorAll('item');
+
+            for (let i = 0; i < Math.min(3, entries.length); i++) {
+                const item = entries[i];
+                items.push({
+                    title: item.querySelector('title')?.textContent || '',
+                    link: item.querySelector('link')?.textContent || '',
+                    pubDate: item.querySelector('pubDate')?.textContent || '',
+                    description: item.querySelector('description')?.textContent || ''
+                });
+            }
+
+            return { items };
+        }
+
+        function displayPosts(posts) {
+            const container = document.getElementById('substack-posts');
+
+            if (!posts || posts.length === 0) {
+                container.innerHTML = '<p>No recent posts found.</p>';
+                return;
+            }
+
+            const postsHTML = posts.map(post => {
+                const date = new Date(post.pubDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                // Clean up the description and create an excerpt
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = post.description;
+                const excerpt = tempDiv.textContent.slice(0, 150) + '...';
+
+                return `
+                    <div class="post-item">
+                        <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="post-title">${post.title}</a>
+                        <div class="post-date">${date}</div>
+                        <div class="post-excerpt">${excerpt}</div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = postsHTML;
+        }
+
+        // Load posts when page loads
+        document.addEventListener('DOMContentLoaded', loadSubstackPosts);
+    </script>
 </body>
 </html>
