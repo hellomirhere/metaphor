@@ -82,6 +82,9 @@
         gap: 4rem;
         padding: 4rem 0;
         align-items: start;
+        margin-top: -10vh;
+        position: relative;
+        z-index: 3;
       }
 
       .section {
@@ -95,6 +98,11 @@
         margin-bottom: 2rem;
         color: #2c3e50;
         text-align: center;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
 
       .section-content {
@@ -126,27 +134,29 @@
         margin-bottom: 2rem;
         color: #666;
         font-size: 1.1rem;
+        line-height: 1.4;
       }
 
       .substack-posts {
         margin: 2rem 0;
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
       }
 
       .post-item {
         background: #f9f9f9;
-        padding: 1.5rem;
-        border-radius: 12px;
-        border-left: 4px solid #FF6719;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 3px solid #FF6719;
         text-align: left;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         aspect-ratio: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        min-height: 200px;
+        min-height: 150px;
+        max-height: 180px;
       }
 
       .post-item:hover {
@@ -155,11 +165,12 @@
       }
 
       .post-title {
-        font-size: 1.3rem;
+        font-size: 1rem;
         font-weight: 600;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
         color: #2c3e50;
         text-decoration: none;
+        line-height: 1.3;
       }
 
       .post-title:hover {
@@ -167,14 +178,19 @@
       }
 
       .post-date {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         color: #888;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
       }
 
       .post-excerpt {
         color: #555;
-        line-height: 1.6;
+        line-height: 1.4;
+        font-size: 0.9rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
       }
 
       .substack-link {
@@ -188,6 +204,30 @@
 
       .substack-link:hover {
         color: #e55a15;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+      }
+
+      .instagram-link {
+        display: inline-block;
+        color: #ccc;
+        transition: color 0.3s ease, opacity 0.3s ease;
+        opacity: 0.6;
+      }
+
+      .instagram-link:hover {
+        color: #E4405F;
+        opacity: 1;
+      }
+
+      .instagram-icon {
+        width: 24px;
+        height: 24px;
       }
 
       /* Responsive Design */
@@ -213,19 +253,43 @@
 
         .sections-grid {
           grid-template-columns: 1fr;
-          gap: 3rem;
+          gap: 2rem;
+          margin-top: -15vh;
         }
 
         .section h2 {
           font-size: 2rem;
+          padding: 0.8rem 1.5rem;
         }
 
         .container {
           padding: 0 1rem;
         }
 
+        .substack-posts {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
         .post-item {
-          min-height: 180px;
+          min-height: 140px;
+          max-height: 160px;
+          padding: 0.8rem;
+        }
+
+        .post-title {
+          font-size: 0.9rem;
+          line-height: 1.2;
+        }
+
+        .post-excerpt {
+          font-size: 0.8rem;
+          -webkit-line-clamp: 2;
+        }
+      }
+
+      @media (max-width: 900px) and (min-width: 769px) {
+        .substack-posts {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
@@ -268,9 +332,9 @@
 
             <!-- What I'm Thinking Section -->
             <section class="section">
-                <h2>What I'm thinking</h2>
+                <h2>What I'm thinking about</h2>
                 <div class="section-content">
-                    <p class="substack-tagline">"Upgrade your internal models and engineer the outcomes you actually want — one conscious iteration at a time."</p>
+                    <p class="substack-tagline">Upgrade your internal models and engineer the outcomes you actually want — one conscious iteration at a time.</p>
                     <div id="substack-posts" class="substack-posts">
                         <p>Loading latest posts...</p>
                     </div>
@@ -281,6 +345,15 @@
             </section>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="https://instagram.com/miriambaysweeney" target="_blank" rel="noopener noreferrer" class="instagram-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="instagram-icon">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+        </a>
+    </footer>
 
     <script>
         async function loadSubstackPosts() {
@@ -341,6 +414,7 @@
                     };
                 }
 
+                window.lastLoadedPosts = data.items;
                 displayPosts(data.items);
             } catch (error) {
                 console.error('Error loading Substack posts:', error);
@@ -365,6 +439,7 @@
                         description: "Fundamental principles to guide your journey toward genuine self-mastery and conscious living."
                     }
                 ];
+                window.lastLoadedPosts = fallbackPosts;
                 displayPosts(fallbackPosts);
             }
         }
@@ -394,7 +469,11 @@
                 return;
             }
 
-            const postsHTML = posts.map(post => {
+            // Show only 2 posts on mobile devices
+            const isMobile = window.innerWidth <= 768;
+            const postsToShow = isMobile ? posts.slice(0, 2) : posts;
+
+            const postsHTML = postsToShow.map(post => {
                 const date = new Date(post.pubDate).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -420,6 +499,18 @@
 
         // Load posts when page loads
         document.addEventListener('DOMContentLoaded', loadSubstackPosts);
+
+        // Reload posts when window is resized (for mobile/desktop switching)
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const container = document.getElementById('substack-posts');
+                if (container && window.lastLoadedPosts) {
+                    displayPosts(window.lastLoadedPosts);
+                }
+            }, 250);
+        });
     </script>
 </body>
 </html>
